@@ -1,0 +1,16 @@
+[
+  {
+    "keys": ["ctrl+shift+."],
+    "command":"sample",
+    "args": {
+      "action": "print_sample"
+    }
+  },
+  {
+    "keys": ["ctrl+shift+/"],
+    "command":"sample",
+    "args": {
+      "action": "success"
+    }
+  }
+]
