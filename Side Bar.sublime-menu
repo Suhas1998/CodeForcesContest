@@ -1,0 +1,26 @@
+[
+    {
+        "caption": "CodeForces",
+        "id": "CodeForces",
+        "children": [
+          {
+            "caption": "Create Contest Environment",
+            "id": "Create Contest Environment",
+            "mnemonic": "C",
+            "command": "create_contest",
+            "args": {
+                "paths": []
+            }
+          },
+          {
+            "caption": "Create Problem Environment",
+            "id": "Create Problem Environment",
+            "mnemonic": "P",
+            "command": "create_contest",
+            "args": {
+                "paths": []
+            }
+          }
+        ]
+    }
+]
