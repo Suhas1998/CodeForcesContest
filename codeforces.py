@@ -7,9 +7,9 @@ from os.path import dirname
 
 from .codeforcesAPI import ContestItem
 
+
 def Window(window=None):
     return window if window else sublime.active_window()
-
 
 class CreateContestCommand(sublime_plugin.WindowCommand):
   contest_id = ''
@@ -38,9 +38,9 @@ class CreateContestCommand(sublime_plugin.WindowCommand):
         self.problem_id = self.problem_id + i
 
     if len(self.problem_id) == 0:
-      self.create_structure(paths, self.contest_id, True)
+      self.create_structure(paths, [self.contest_id], True)
     else:
-      self.create_structure(paths, self.contest_id + self.problem_id, False)
+      self.create_structure(paths, [self.contest_id, self.problem_id], False)
 
   def create_structure(self, paths, name, is_contest):
     _path = paths[0]
@@ -52,18 +52,13 @@ class CreateContestCommand(sublime_plugin.WindowCommand):
       print("That was a file " + branch)
       _path = branch
     else:
+      _path = os.path.expanduser("~/Desktop")
       print("It is a special file (socket, FIFO, device file)" )
 
     print("Final path: " + _path)
 
-    try:
-        os.mkdir(str(_path) + "/" + name)
-        contest = ContestItem(str(_path) + "/" + name, name)
-        print("Done Bro")
-    except FileExistsError:
-        # directory already exists
-        print("Couldnt create")
-        pass
+    contest = ContestItem(_path, name)
+    contest.make_folder()
 
     sublime.active_window().run_command("refresh_folder_list")
 
