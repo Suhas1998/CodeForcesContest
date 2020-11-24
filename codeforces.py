@@ -63,4 +63,9 @@ class CreateContestCommand(sublime_plugin.WindowCommand):
     sublime.active_window().run_command("refresh_folder_list")
 
 
+class CompilerView(sublime_plugin.TextCommand):
+  path = dirname(__file__)
+  """docstring for CompilerView"""
+  def run(self, edit, action=None):
+    print(self.path)
 
